@@ -5,6 +5,7 @@ import socket
 import pyautogui
 import threading
 #import pyperclip
+
 """
 def type_text(text):
     # 与えた文字を入力（クリップボードにコピー＆ペースト）
@@ -21,7 +22,7 @@ def type_enter():
     return True
 """
 class Receiver():
-    def __init__(self, port=8888, ipaddr=None, set_daemon=True, log_function= None):
+    def __init__(self, port=40000, ipaddr=None, set_daemon=True, log_function= None):
         """
         受信側
 
@@ -36,7 +37,7 @@ class Receiver():
         """
         if(ipaddr is None):
             host = socket.gethostname()
-            ipaddr = socket.gethostbyname(host)
+            ipaddr = socket.gethostbyname_ex(host)[2][0]
         self.ipaddr = ipaddr
         self.port = port
         self.set_daemon = set_daemon

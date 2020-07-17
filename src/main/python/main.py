@@ -60,7 +60,7 @@ class MainWidget(QWidget):#QMainWindow):
         vbox.addWidget(self.status_text)
         self.setLayout(vbox)
 
-        self.receiver = Receiver(port=8888, ipaddr = None, set_daemon=True, log_function=lambda x :self.status_text.setText(x) )
+        self.receiver = Receiver(port=40000, ipaddr = None, set_daemon=True, log_function=lambda x :self.status_text.setText(x) )
         self.ipaddr = self.receiver.ipaddr
         self.port = self.receiver.port
 
