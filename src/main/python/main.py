@@ -49,20 +49,23 @@ class MainWidget(QWidget):#QMainWindow):
         # self.show()
     
     def initUI(self):
+        self.receiver = Receiver(port=40000, ipaddr = None, set_daemon=True, log_function=lambda x :self.status_text.setText(x) )
+        self.receiver.start_loop()
+        self.ipaddr = self.receiver.ipaddr
+        self.port = self.receiver.port
 
         self.startButton = QPushButton("start", self)
         self.startButton.clicked.connect(self.startButtonClicked)
         
         self.status_text = QLabel("start server")
+        self.status_text.setText(f"ip:{self.ipaddr} port:{self.port}")
         vbox = QVBoxLayout()
         vbox.addStretch(1)
         vbox.addWidget(self.startButton)
         vbox.addWidget(self.status_text)
         self.setLayout(vbox)
 
-        self.receiver = Receiver(port=40000, ipaddr = None, set_daemon=True, log_function=lambda x :self.status_text.setText(x) )
-        self.ipaddr = self.receiver.ipaddr
-        self.port = self.receiver.port
+       
 
         
 

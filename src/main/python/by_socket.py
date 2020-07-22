@@ -4,6 +4,8 @@ import time
 import socket
 import pyautogui
 import threading
+from pywinauto.keyboard import send_keys
+# https://pywinauto.readthedocs.io/en/latest/code/pywinauto.keyboard.html
 #import pyperclip
 
 """
@@ -78,6 +80,21 @@ class Receiver():
                         if text =="R":
                             pyautogui.hotkey("ctrl", "winleft", "right")
                             print("R")
+                        if text =="drag1R":
+                            pyautogui.hotkey("ctrl","tab")
+                        if text =="drag1L":
+                            pyautogui.hotkey("ctrl" ,"shift","tab")
+
+                        
+                        if text =="drag2S" :
+                            pyautogui.hotkey("winleft", "tab")
+                        if text =="drag2E":
+                            send_keys('{ENTER}')
+                        if text =="drag2R":
+                            print("inputR")
+                            send_keys('{RIGHT}')
+                        if text =="drag2L":
+                            send_keys('{LEFT}')
 
     def start_loop(self):
         self.loopflag = True
